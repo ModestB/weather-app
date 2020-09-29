@@ -1,0 +1,76 @@
+@import '../../../assets/scss/variables';
+
+.card {
+  position: relative;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 220px;
+  margin: 0 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: $secondary--contrast;
+  box-shadow: 0 0 15px 0 rgba($primary--muted, 0.8);
+  transition: 
+    box-shadow 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px 0 rgba($primary, 0.8);
+    .title {
+      color: $primary;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  width: 100%;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: $secondary;
+  transition: color 0.3s ease-in-out;
+}
+
+.img {
+  width: 100px;
+  height: auto;
+}
+
+.temp {
+  font-size: 66px;
+  font-weight: 700;
+  margin: 20px 0 10px 0;
+}
+
+.feelsLike {
+  font-size: 20px;
+  font-weight: 400;
+  color: $secondary;
+  span {
+    color: $primary;
+    padding: 0 4px;
+  }
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  color: $secondary;
+  margin: 5px 0 0 0;
+}
