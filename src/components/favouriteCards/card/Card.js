@@ -1,11 +1,21 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
+import { getWeatherData } from '../../../store/actions/index';
 
 import classes from './Card.module.scss'
 
 const Card = ({data}) => {
-  console.log(data)
+  const dispatch = useDispatch();
+
+  const cardClickHandler = () => {
+    console.log(data)
+    dispatch(getWeatherData(data.coord.lat, data.coord.lon, data.name))
+  }
   return (
-    <div className={classes.card}>
+    <div 
+      className={classes.card}
+      onClick={cardClickHandler}
+    >
       <div className={classes.header}>
         <div className={classes.title}>{data.name}</div>
         <img className={classes.img} src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}></img>

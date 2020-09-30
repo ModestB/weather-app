@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getInitialWeatherDate } from './store/actions/index';
 
 import classes from './App.module.scss'
 
-import Cards from './components/cards/Cards';
+import FavourtieCards from './components/favouriteCards/FavouriteCards';
+import Single from './components/single/Single';
 
 function App() {
   const dispatch = useDispatch();
+  const showSinglePage = useSelector(state => state.pageSettings.showSinglePage)
 
   useEffect(() => {
     dispatch(getInitialWeatherDate());
@@ -15,7 +17,8 @@ function App() {
 
   return (
     <div className={classes.container}>
-      <Cards />
+      {showSinglePage && <Single />}
+      <FavourtieCards />
     </div>
   );
 }

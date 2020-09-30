@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 
 import Card from './card/Card';
 
-import classes from './Cards.module.scss';
+import classes from './FavouriteCards.module.scss';
 
-const Cards = () => {
-  const data = useSelector(state => state.weather.data);
+const FavouriteCards = () => {
+  const data = useSelector(state => state.weather.favourieLocationData);
 
   return (
     <div className={classes.cards}>
@@ -17,4 +17,4 @@ const Cards = () => {
   )
 }
 
-export default Cards;
+export default FavouriteCards;
