@@ -4,6 +4,9 @@ import dayjs from 'dayjs';
 
 import classes from './Single.module.scss';
 
+import ForecastCards from '../forecastCards/ForecastCards';
+import Map from '../map/Map';
+
 const Single = () => {
   const data = useSelector(state => state.weather.data);
   console.log(dayjs())
@@ -23,8 +26,12 @@ const Single = () => {
             <div className={classes.feelsLike}>
               Pojūtis {`${data.current.feels_like > 0  ? '+' : ''}${Math.round(data.current.feels_like)}`}°C
             </div>
+            <div className={classes.description}>
+              {data.current.weather[0].description.charAt(0).toUpperCase() + data.current.weather[0].description.slice(1)}
+            </div>
           </div>
-     
+          <ForecastCards data={data.daily} />
+          <Map location={data.name}/>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { getInitialWeatherDate } from './store/actions/index';
 
 import classes from './App.module.scss'
 
+import Search from './components/search/Search';
 import FavourtieCards from './components/favouriteCards/FavouriteCards';
 import Single from './components/single/Single';
 
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <div className={classes.container}>
+      <Search />
       {showSinglePage && <Single />}
       <FavourtieCards />
     </div>

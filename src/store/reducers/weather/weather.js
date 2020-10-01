@@ -3,11 +3,14 @@ import {
   INITIAL_WEATHER_DATA_SUCCEEDED,
   WEATHER_DATA_REQUESTED,
   WEATHER_DATA_SUCCEEDED,
+  WEATHER_DATA_FAILED,
 } from '../../actionsTypes';
 
 const initialState = {
   favourieLocationData: [],
   data: [],
+  error: false,
+  errorMsg: ''
 };
 
 function setFavouriteLocationsWeatherData(state, data) {
@@ -27,6 +30,14 @@ function setWeatherData(state, data, name) {
   return nextState;
 }
 
+function weatherDataFailedHandler(state, errorMsg) {
+  const nextState = produce(state, draftState => {
+    draftState.error = true;
+    draftState.errorMsg = errorMsg; 
+  })
+  return nextState;
+}
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case INITIAL_WEATHER_DATA_SUCCEEDED:
@@ -37,6 +48,9 @@ export default (state = initialState, action) => {
 
     case WEATHER_DATA_SUCCEEDED:
       return setWeatherData(state, action.payload.data, action.payload.name);
+
+    case WEATHER_DATA_FAILED:
+      return weatherDataFailedHandler(state, action.payload.errorMsg)
   
     default:
       return state;
