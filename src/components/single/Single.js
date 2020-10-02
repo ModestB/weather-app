@@ -1,18 +1,40 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
+import { addFavouriteLocation, deleteFavouriteLocation } from '../../store/actions/index';
 
 import classes from './Single.module.scss';
 
 import ForecastCards from '../forecastCards/ForecastCards';
 import Map from '../map/Map';
+import BookmarkIcon from '../icons/BookmarkIcon'
 
 const Single = () => {
   const data = useSelector(state => state.weather.data);
-  console.log(dayjs())
+  const dispatch = useDispatch();
+  const favouriteLocations = useSelector(state => state.pageSettings.favouriteLocations);
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    setActive(Object.keys(favouriteLocations).includes(data.name))
+  }, [favouriteLocations, data])
+
+  const bookmarkClickHandler = () => {
+    console.log(active)
+    if (!active) {
+      const location = {};
+      location[data.name] = data.cityId;
+      dispatch(addFavouriteLocation(location))
+    } else {
+      dispatch(deleteFavouriteLocation(data.name))
+    }  
+  }
   return (
     <div className={classes.container}>
       <div className={classes.header}>
+        <div onClick={bookmarkClickHandler}>
+          <BookmarkIcon active={active} />
+        </div>   
         <div className={classes.title}>{data.name}</div>
         <img className={classes.img} src={`http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`}></img>
       </div>

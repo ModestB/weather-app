@@ -1,0 +1,18 @@
+.icon-bookmark {
+  fill: $secondary--muted;
+  transition: fill 0.3s ease-in-out;
+  @media (hover:hover) {
+    &:hover {
+      cursor: pointer;
+      fill: $brand;
+    }
+  }
+  &.active {
+    fill: $brand;
+    @media (hover:hover) {
+      &:hover {
+        fill: $secondary--muted;
+      }
+    }
+  }
+}

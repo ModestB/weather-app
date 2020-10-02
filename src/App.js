@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getInitialWeatherDate } from './store/actions/index';
+import { getFavouriteWeatherData, cleanFavouriteWeatherData, getFavouriteLocations } from './store/actions/index';
 
 import classes from './App.module.scss'
 
@@ -11,10 +11,19 @@ import Single from './components/single/Single';
 function App() {
   const dispatch = useDispatch();
   const showSinglePage = useSelector(state => state.pageSettings.showSinglePage)
+  const favouriteLocations = useSelector(state => state.pageSettings.favouriteLocations);
 
   useEffect(() => {
-    dispatch(getInitialWeatherDate());
-  }, []);
+    dispatch(getFavouriteLocations());
+  }, [])
+
+  useEffect(() => {    
+    if (Object.keys(favouriteLocations).length) {
+      dispatch(getFavouriteWeatherData(Object.values(favouriteLocations)));
+    } else {
+      dispatch(cleanFavouriteWeatherData());
+    }  
+  }, [favouriteLocations]);
 
   return (
     <div className={classes.container}>
