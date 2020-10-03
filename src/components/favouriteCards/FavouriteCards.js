@@ -9,11 +9,14 @@ const FavouriteCards = () => {
   const data = useSelector(state => state.weather.favourieLocationData);
 
   return (
-    <div className={classes.cards}>
-      {
-        data.map(entry => <Card key={entry.id} data={entry} />)
-      }
-    </div>
+    <React.Fragment>
+      <div className={classes.title}>Favourite locations</div>
+      <div className={classes.cards}>
+        {
+          data.map(entry => <Card key={entry.id} data={entry} />)
+        }
+      </div>
+    </React.Fragment>
   )
 }
 

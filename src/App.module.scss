@@ -1,6 +1,6 @@
 @import "./assets/scss/variables";
 
-.container{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,4 +8,24 @@
   min-width: 100vw;
   min-height: 100vh;
   background-color: $secondary;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 20px;
+  @media only screen and (min-width: 1199.98px) {
+    width: $desktop-width;
+  }
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 25px 0;
+  color:  $secondary--contrast;
 }

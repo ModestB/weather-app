@@ -40,6 +40,7 @@ const Search = () => {
           className={classes.input}
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          onKeyPress={e => e.key === 'Enter' && sumbitHandler()}
           placeholder="Search for your location"
         />
         <button
@@ -59,7 +60,7 @@ const Search = () => {
 }
 
 function inputValueValidator(str) {
-  const regex = /^[a-z0-9]+$/i;
+  const regex = /[^a-zA-Z\d\s:\u00C0-\u00FF]/g;
 
   if (!str.length) {
     return false;

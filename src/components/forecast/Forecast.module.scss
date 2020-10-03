@@ -1,14 +1,25 @@
-@import "../../assets/scss/variables";
+@import '../../assets/scss/variables';
 
-.cards {
-  display: flex;
-  flex-wrap: nowrap;
+.container {
   width: 100%;
-  margin: 0 -10px;
-  padding: 10px 10px 0 0;
+  display: flex;
+  flex-direction: column; 
+}
+
+.title {
+  font-size: 24px;
+  color: $secondary--contrast;
+  margin: 20px 0;
+}
+
+.chartWrapper {
+  width: 100%;
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba($primary--muted, 0.5) transparent; 
+  @media only screen and (min-width: 1198.98px) {
+    overflow: hidden;
+  }
   &::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -25,10 +36,4 @@
     grid-template-columns: 1fr 1fr 1fr;
     width: calc(100% + 20px);
   }
-}
-
-.title {
-  font-size: 29px;
-  color: $secondary--contrast;
-  margin:  20px auto 20px 0;
 }

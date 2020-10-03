@@ -1,11 +1,12 @@
 @import "../../assets/scss/variables";
 
 .container {
-  background-color: $secondary--contrast;
-  width: 900px;
+  width: 100%;
   border-radius: $primary-border-radius;
-  padding: 10px;
   margin-bottom: 20px;
+  @media only screen and (min-width: 767.98px) {
+    padding: 10px;
+  }
 }
 
 .header {
@@ -13,6 +14,7 @@
   align-items: center;
   height: 50px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .body {
@@ -22,45 +24,113 @@
 
 .row {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
+  margin-bottom: 20px;
+  @media only screen and (min-width: 767.98px) {
+    flex-wrap: nowrap;
+  }
 }
 
 .title {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
-  color: $secondary;
+  color: $secondary--contrast;
+}
+
+.bookmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
 }
 
 .tempBlock {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba($brand, 0.7);
-  padding: 10px 20px;
-  border-radius: $primary-border-radius;
+  width: 50%;
+  @media only screen and (min-width: 767.98px) {
+    width: auto;
+  }
 }
 
 .temp {
-  font-size: 24px;
-  font-weight: 700;
-  color: $black;
-  margin: 4px 0
+  display: flex;
+  align-items: flex-start;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 0.9;
+  color: $secondary--contrast;
+  @media only screen and (min-width: 575.98px) {
+    font-size: 66px;
+  }
+  @media only screen and (min-width: 767.98px) {
+    font-size: 96px;
+  }
+  span {
+    font-size: 24px;
+    margin-left: 10px;
+    line-height: 1;
+    @media only screen and (min-width: 767.98px) {
+      font-size: 42px;
+    }
+  }
 }
 
-.feelsLike {
-  font-size: 16px;
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin-bottom: 20px;
+  @media only screen and (min-width: 767.98px) {
+    width: auto;
+    margin-bottom: 0;
+    margin-left: 30px;
+  }
+}
+
+.infoBlockSeconadry {
+  align-items: center;
+  width: 100%;
+  @media only screen and (min-width: 575.98px) {
+    width: 50%;
+  }
+  @media only screen and (min-width: 767.98px) {
+    align-items: flex-start;
+    width: auto;
+  }
+}
+
+.weather {
+  font-size: 22px;
   font-weight: 400;
-  color: $black;
+  color: $secondary--contrast;
+  text-align: center;
 }
 
 .img {
-  width: 100px;
+  width: 60px;
   height: auto;
-  margin-left: auto;
+  margin: -10px;
+  @media only screen and (min-width: 767.98px) {
+    width: 100px;
+    margin: -20px;
+  }
 }
 
 .description {
   font-size: 16px;
-  font-weight: 400;
-  color: $black;
+  font-weight: 700;
+  color: $secondary--contrast;
+  margin: 2px 0;
+  span {
+    font-weight: 700;
+    margin-right: 5px;
+    color: $secondary--muted;
+  }
 }

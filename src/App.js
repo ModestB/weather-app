@@ -27,9 +27,12 @@ function App() {
 
   return (
     <div className={classes.container}>
-      <Search />
-      {showSinglePage && <Single />}
-      <FavourtieCards />
+      <div className={classes.title}>weather-app</div>
+      <div className={classes.content}>
+        <Search />
+        {showSinglePage && <Single />}
+        <FavourtieCards />
+      </div>
     </div>
   );
 }
