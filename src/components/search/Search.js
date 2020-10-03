@@ -60,7 +60,7 @@ const Search = () => {
 }
 
 function inputValueValidator(str) {
-  const regex = /[^a-zA-Z\d\s:\u00C0-\u00FF]/g;
+  const regex = /^[a-z0-9]+$/i;
 
   if (!str.length) {
     return false;

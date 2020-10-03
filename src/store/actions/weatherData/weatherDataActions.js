@@ -12,7 +12,7 @@ export const getFavouriteWeatherData = (favouriteLocations) => {
   return dispatch => {
     dispatch({type: FAVOURITE_WEATHER_DATA_REQUESTED})
 
-    return axios.get(`http://api.openweathermap.org/data/2.5/group?id=${favouriteLocations.join(',')}&appid=${process.env.REACT_APP_WEATHER_KEY}&units=metric&lang=lt`)
+    return axios.get(`https://api.openweathermap.org/data/2.5/group?id=${favouriteLocations.join(',')}&appid=${process.env.REACT_APP_WEATHER_KEY}&units=metric&lang=lt`)
       .then(response => {
         dispatch({
           type: FAVOURITE_WEATHER_DATA_SUCCEEDED,
